@@ -50,7 +50,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ChangePool', // Usually your GitHub org/user name.
+  organizationName: 'CoinCashewIO', // Usually your GitHub org/user name.
   projectName: 'CardanoSPOGuide', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -116,7 +116,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl:
-          //  'https://github.com/ChangePool/CardanoSPOGuide',
+          //  'https://github.com/CoinCashewIO/CardanoSPOGuide',
           // August 17, 2025 - Enable docs-only mode to remove the default landing page
           routeBasePath: '/',
         },
@@ -131,7 +131,7 @@ const config = {
         //  // Please change this to your repo.
         //  // Remove this to remove the "edit this page" links.
         //  editUrl:
-        //    'https://github.com/ChangePool/CardanoSPOGuide',
+        //    'https://github.com/CoinCashewIO/CardanoSPOGuide',
         //  // Useful options to enforce blogging best practices
         //  onInlineTags: 'warn',
         //  onInlineAuthors: 'warn',
@@ -210,7 +210,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/ChangePool/CardanoSPOGuide',
+            href: 'https://github.com/CoinCashewIO/CardanoSPOGuide',
             label: 'GitHub',
             position: 'right',
           },
@@ -275,7 +275,7 @@ const config = {
               //},
               //{
                 //label: 'GitHub',
-                //href: 'https://github.com/ChangePool/CardanoSPOGuide',
+                //href: 'https://github.com/CoinCashewIO/CardanoSPOGuide',
               //},
             //],
           //},
@@ -284,7 +284,7 @@ const config = {
         //copyright: `Copyright © ${new Date().getFullYear()} | Presented by CoinCashew | Built Using Docusaurus.`,
         // copyright: 'Creative Commons Attribution 4.0 International | Presented by CoinCashew | Created Using Docusaurus',
         // copyright: 'Hosted by <a href="https://coincashew.io" target="_blank">Change [CHG] Stake Pool</a> | Presented by CoinCashew | Published Using Docusaurus',
-        copyright: 'Hosted by <a href="https://coincashew.io" target="_blank">Change [CHG] Stake Pool</a><br />Presented by CoinCashew.io',
+        copyright: 'Hosted by the <a href="https://coincashew.io" target="_blank">CoinCashew.io [CASHEW] Stake Pool</a>',
       },
       prism: {
         // October 21, 2025 - Set themes for syntax highlighting
