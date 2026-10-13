@@ -284,7 +284,7 @@ const config = {
         //copyright: `Copyright © ${new Date().getFullYear()} | Presented by CoinCashew | Built Using Docusaurus.`,
         // copyright: 'Creative Commons Attribution 4.0 International | Presented by CoinCashew | Created Using Docusaurus',
         // copyright: 'Hosted by <a href="https://coincashew.io" target="_blank">Change [CHG] Stake Pool</a> | Presented by CoinCashew | Published Using Docusaurus',
-        copyright: 'Hosted by the <a href="https://coincashew.io" target="_blank">CoinCashew.io [CASHEW] Stake Pool</a>',
+        copyright: 'Hosted by the <a href="https://coincashew.io" target="_blank">CoinCashew.io [CCASH] Stake Pool</a>',
       },
       prism: {
         // October 21, 2025 - Set themes for syntax highlighting
