@@ -74,6 +74,61 @@ sudo ufw status verbose
 
 6\. Repeat the procedure for each computer in your stake pool configuration.
 
+If you have custom `iptables` commands that UFW does not support, then add your custom rules to `/etc/ufw/before*.rules` and `/etc/ufw/after*.rules` files as needed.
+
+For example, to protect relay nodes in the stake pool that you operate from denial-of-service (DoS) or SYN flood attacks you can limit the number of connections from an IP address.
+
+**To limit the number of connections from an IP address:**
+
+1\. On the computer hosting a relay node, using a terminal window type the following command to edit IPv4 rules:
+```bash
+sudo nano /etc/ufw/before.rules
+```
+
+2\. In the `before.rules` file, add the following lines at the end where `<PortNumber>` is the port where the local instance of Cardano Node listens:
+```bash
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -p tcp -m tcp --dport <PortNumber> --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 5 --connlimit-mask 32 --connlimit-saddr -j REJECT --reject-with tcp-reset
+COMMIT
+```
+
+:::note
+To generate syntax for the `before.rules` file, type `sudo iptables-save > CurrentRules.v4` to dump the current active IPv4 rules to the `CurrentRules.v4` text file. As indicated using the `--connlimit-above` option, the rule limits the number of connections from the same IP address to 5. If needed, set the connection limit higher so that the stake pool you operate continues to function using your network topology.
+:::
+
+3\. Save and close the `before.rules` file.
+
+4\. To edit IPv6 rules, type:
+```bash
+sudo nano /etc/ufw/before6.rules
+```
+
+5\. In the `before6.rules` file, add the following lines at the end where `<PortNumber>` is the port where the local instance of Cardano Node listens:
+```bash
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -p tcp -m tcp --dport <PortNumber> --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 5 --connlimit-mask 128 --connlimit-saddr -j REJECT --reject-with tcp-reset
+COMMIT
+```
+
+:::note
+To generate syntax for the `before6.rules` file, type `sudo ip6tables-save > CurrentRules.v6` to dump the current active IPv6 rules to the `CurrentRules.v6` text file. Set the connection limit as needed so that the stake pool you operate continues to function using your network topology.
+:::
+
+6\. Save and close the `before6.rules` file.
+
+7\. To reload UFW, type:
+```bash
+sudo ufw reload
+```
+
+8\. To configure additional relay nodes, repeat steps 1 to 7 for each additional relay node in your stake pool configuration.
+
 For more details on using UFW, refer to the [manual page](https://manpages.ubuntu.com/manpages/questing/en/man8/ufw.8.html) for example.
 
 ## Verifying Port Status
