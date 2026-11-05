@@ -85,14 +85,13 @@ For example, to protect relay nodes in the stake pool that you operate from deni
 sudo nano /etc/ufw/before.rules
 ```
 
-2\. In the `before.rules` file, add the following lines at the end where `<PortNumber>` is the port where the local instance of Cardano Node listens:
+2\. In the `before.rules` file, add the following lines prior to the `COMMIT` statement in the last line of the file, where `<PortNumber>` is the port where the local instance of Cardano Node listens:
 ```bash
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -p tcp -m tcp --dport <PortNumber> --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 5 --connlimit-mask 32 --connlimit-saddr -j REJECT --reject-with tcp-reset
-COMMIT
 ```
 
 :::note
@@ -106,14 +105,13 @@ To generate syntax for the `before.rules` file, type `sudo iptables-save > Curre
 sudo nano /etc/ufw/before6.rules
 ```
 
-5\. In the `before6.rules` file, add the following lines at the end where `<PortNumber>` is the port where the local instance of Cardano Node listens:
+5\. In the `before6.rules` file, add the following lines prior to the `COMMIT` statement in the last line of the file, where `<PortNumber>` is the port where the local instance of Cardano Node listens:
 ```bash
 *filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -p tcp -m tcp --dport <PortNumber> --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 5 --connlimit-mask 128 --connlimit-saddr -j REJECT --reject-with tcp-reset
-COMMIT
 ```
 
 :::note
